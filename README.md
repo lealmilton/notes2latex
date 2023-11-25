@@ -5,6 +5,8 @@ Ugly math hand notes --> pretty Latex
 ## Overview
 The Notes2LaTeX project is designed to convert handwritten notes into formatted LaTeX PDF documents. This process involves extracting text and graphical elements from images, post-processing and structuring the content using GPT-4, and finally, generating a LaTeX PDF document with the formatted content.
 
+![Architecture Diagram](docs/diagram.png)
+
 ## Project Structure
 
 ### `/data`
