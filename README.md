@@ -10,8 +10,10 @@ The Notes2LaTeX project is designed to convert handwritten notes into formatted 
 ## Project Structure
 
 ### `/data`
-- `/images`: This directory holds the uploaded images of handwritten notes that need to be processed.
-- `/processed`: After the images are processed, the extracted text and graphics are stored here before being converted into a PDF.
+- `/notes`: This directory holds the uploaded pdf of handwritten notes that need to be processed.
+- `/processed`: stores the assets folder of a given notes pdf
+- `/processed/pdf_name_placeholder/pngs`: folder that stores every pdf page converted as png.
+- `/processed/pdf_name_placeholder/ocr_text`: folder that stores every png extracted text using GPT-4V.
 
 ### `/notebooks`
 - Jupyter notebooks used for prototyping and testing the algorithms before integrating them into the main application.
