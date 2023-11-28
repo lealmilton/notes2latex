@@ -1,4 +1,19 @@
 import os
+import tiktoken
+
+def read_file(file_path):
+    with open(file_path, 'r', encoding='utf-8') as file:
+        return file.read()
+    
+def save_to_file(file_path, content):
+    with open(file_path, 'w', encoding='utf-8') as file:
+        file.write(content)
+
+def count_tokens(string: str, encoding_name: str = "cl100k_base"):
+
+    encoding = tiktoken.get_encoding(encoding_name)
+    num_tokens = len(encoding.encode(string))
+    return num_tokens
 
 def get_previous_description(ocr_text_folder, current_file_index):
     """Retrieves the previous description from the OCR text files."""
@@ -32,3 +47,5 @@ def concatenate_text_files(ocr_text_folder, output_file_path):
         output_file.write(concatenated_text)
 
     print(f"All text files have been concatenated into '{output_file_path}'.")
+
+
