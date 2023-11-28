@@ -1,5 +1,6 @@
 import os
 import tiktoken
+from src.utils.prompts import PROMPT_OCR, PREVIOUS_NOTES_CONTEXT_OCR, FIRST_PAGE_CONTEXT_OCR
 
 def read_file(file_path):
     with open(file_path, 'r', encoding='utf-8') as file:
@@ -25,6 +26,13 @@ def get_previous_description(ocr_text_folder, current_file_index):
             with open(previous_file_path, 'r', encoding='utf-8') as file:
                 return file.read()
     return ""
+
+
+def create_prompt_with_previous_description(previous_description: str) -> str:
+    """Cria um prompt para o GPT-4V que inclui a descrição da página anterior ou lida com o início das anotações."""
+    context = PREVIOUS_NOTES_CONTEXT_OCR.format(previous_description=previous_description) if previous_description else FIRST_PAGE_CONTEXT_OCR
+    return PROMPT_OCR.format(context=context)
+
 
 def concatenate_text_files(ocr_text_folder, output_file_path):
     # Ensure the folder exists

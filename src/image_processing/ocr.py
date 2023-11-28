@@ -3,7 +3,7 @@ import requests
 import time
 from src.image_processing.image_utils import encode_image_to_base64
 from src.text_processing.text_utils import get_previous_description
-from src.utils.prompts import create_prompt_with_previous_description
+from src.text_processing.text_utils import create_prompt_with_previous_description
 
 api_key = os.getenv('OPENAI_API_KEY')
 
