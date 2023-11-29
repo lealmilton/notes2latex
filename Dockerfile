@@ -6,7 +6,7 @@ COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 RUN apt-get update && \
-    apt-get install -y poppler-utils pandoc binutils texlive && \
+    apt-get install -y poppler-utils binutils texlive && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
