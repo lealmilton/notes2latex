@@ -1,0 +1,23 @@
+##OBSERVATIONS##
+The content of the image appears to be a continuation of handwritten notes from a mathematics course, possibly related to the topic of "Controllability" based on the provided context. The notes are written in the same language as the previous notes you provided, Portuguese. There are no graphs, drawings, or additional visual elements in this image. The text is focused on providing examples related to the controllability of a system. Specific conditions for the matrix B are given in two examples, and the implications for system controllability are noted. No parts of the notes are cut off or missing, and the handwriting is mostly clear, but as with any handwritten notes, there is room for interpretation regarding certain letters or symbols.
+
+##ACTUAL TRANSCRIPTION##
+a e b são características do sistema (da planta)
+
+2) Exemplos:
+
+a) Se $B=0$
+
+$\dot{x} = Ax$ é não controlável
+
+Basta termos
+
+$\begin{pmatrix} a_1 \\ a_2 \end{pmatrix} = 0$ e $b \neq 0$
+
+b) Se $B=I$ ($r=n$)
+
+$\dot{x} = Ax + u$
+
+A solução geral da equação
+
+é a seguinte

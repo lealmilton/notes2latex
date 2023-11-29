@@ -1,0 +1,56 @@
+## OBSERVATIONS ##
+The content of the image appears to be the first page of handwritten notes from a mathematics course, focusing on the topic of "Controllability." The language of the notes is Portuguese. There are no graphs, drawings, or complex elements that are not distinguishable. The context of the content is related to linear dynamic systems, specifically the definition and conditions under which a system is considered controllable. The equation presented is a standard linear state-space representation of a dynamic system. The handwriting is relatively clear, but due to its handwritten nature, some letters might be interpreted differently by different people. There do not seem to be any omissions that will affect the transcription.
+
+## ACTUAL TRANSCRIPTION ##
+Controllabilidade
+
+1) Defi:
+
+Um Sistema
+
+$\dot{x} = Ax + Bu$
+
+$x \in \mathbb{R}^n$ -> Variáveis de estados
+
+$u \in \mathbb{R}^r$ -> Variáveis de controle
+
+é dito controlável se
+
+para qualquer $a \in \mathbb{R}^n$ (condição inicial)
+
+$b \in \mathbb{R}^n$ (condição final)
+
+$T > 0$ é possível
+
+encontrar uma função
+
+$u : [0,T] \rightarrow \mathbb{R}^r$
+
+tal que
+
+$x(0) = a$
+
+e $x(T) = b$
+##OBSERVATIONS##
+The content of the image appears to be a continuation of handwritten notes from a mathematics course, possibly related to the topic of "Controllability" based on the provided context. The notes are written in the same language as the previous notes you provided, Portuguese. There are no graphs, drawings, or additional visual elements in this image. The text is focused on providing examples related to the controllability of a system. Specific conditions for the matrix B are given in two examples, and the implications for system controllability are noted. No parts of the notes are cut off or missing, and the handwriting is mostly clear, but as with any handwritten notes, there is room for interpretation regarding certain letters or symbols.
+
+##ACTUAL TRANSCRIPTION##
+a e b são características do sistema (da planta)
+
+2) Exemplos:
+
+a) Se $B=0$
+
+$\dot{x} = Ax$ é não controlável
+
+Basta termos
+
+$\begin{pmatrix} a_1 \\ a_2 \end{pmatrix} = 0$ e $b \neq 0$
+
+b) Se $B=I$ ($r=n$)
+
+$\dot{x} = Ax + u$
+
+A solução geral da equação
+
+é a seguinte
