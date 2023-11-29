@@ -1,0 +1,32 @@
+# Ignore Git and version control
+.git
+.gitignore
+
+# Ignore Python bytecode
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore temporary files
+.DS_Store
+.env
+*.env
+.env.*
+.venv
+.venv/*
+venv
+venv/*
+
+# Ignore Docker-related
+docker-compose.yml
+Dockerfile
+
+# Ignore specific directories
+node_modules
+tests
+notebooks
+
+# Ignore specific files
+*.md
+LICENSE
