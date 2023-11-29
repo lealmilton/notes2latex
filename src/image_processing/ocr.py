@@ -1,4 +1,5 @@
 import os
+from config import BASE_DATA_PATH, BASE_PROCESSED_PATH, POPPLER_PATH, TOKEN_THRESHOLD
 import requests
 import time
 from src.image_processing.image_utils import encode_image_to_base64
@@ -42,8 +43,13 @@ def send_image_to_gpt4v(image_path, prompt):
     return response.json()
 
 
-def process_png_images(folder_path, output_folder):
+def process_png_images(file_name):
     """Processes all PNG images in the specified folder and saves the extracted text."""
+
+    folder_path = os.path.join(BASE_PROCESSED_PATH, file_name, 'pngs')
+    output_folder = os.path.join(BASE_PROCESSED_PATH, file_name, 'ocr_text')
+
+    
     files = os.listdir(folder_path)
     png_files = [file for file in files if file.endswith('.png')]
     png_files_sorted = sorted(png_files, key=lambda x: int(x.split('.')[0]))
