@@ -9,9 +9,6 @@ The Notes2LaTeX project is designed to convert handwritten notes into formatted 
 
 ## Project Structure
 
-### `/data`
-- `/notes`: Holds the uploaded PDFs of handwritten notes for processing.
-
 ### `/src`
 Organizes all the source code into modules by functionality.
 
