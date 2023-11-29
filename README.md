@@ -12,9 +12,6 @@ The Notes2LaTeX project is designed to convert handwritten notes into formatted 
 ### `/data`
 - `/notes`: Holds the uploaded PDFs of handwritten notes for processing.
 
-### `/notebooks`
-- `poc.ipynb`: A Jupyter notebook used for prototyping and testing algorithms before integrating them into the main application.
-
 ### `/src`
 Organizes all the source code into modules by functionality.
 

@@ -1,7 +1,6 @@
 import os
 from pdf2image import convert_from_path
 import base64
-from config import BASE_DATA_PATH, POPPLER_PATH
 
 def convert_pdf_to_png(file_name):
     pdf_path = file_name

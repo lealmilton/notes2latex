@@ -1,11 +1,9 @@
 import os
-from config import BASE_DATA_PATH, BASE_PROCESSED_PATH, POPPLER_PATH, TOKEN_THRESHOLD
+from config import TOKEN_THRESHOLD
 from openai import OpenAI
-
 from src.text_processing.text_utils import read_file, save_to_file
-from src.utils.prompts import PROMPT_CHECK_LATEX
+from src.utils.prompts import PROMPT_CHECK_LATEX, PROMPT_TEX
 from src.text_processing.text_utils import count_tokens, read_file, save_to_file
-from src.utils.prompts import PROMPT_MD
 
 api_key = os.getenv('OPENAI_API_KEY')
 
@@ -42,7 +40,7 @@ def create_tex(combined_text_path):
     total_tokens = count_tokens(file_content)
 
     if total_tokens <= TOKEN_THRESHOLD:
-        response = gpt4_completion("", file_content, PROMPT_MD)
+        response = gpt4_completion("", file_content, PROMPT_TEX)
         save_to_file(output_file_path, response)
         print(f"Formatted notes saved to {output_file_path}")
     else:

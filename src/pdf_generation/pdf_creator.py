@@ -1,4 +1,3 @@
-from config import BASE_PROCESSED_PATH
 import subprocess
 import os
 import streamlit as t
@@ -30,6 +29,7 @@ def output_pdf(tex_file_path):
             print("PDF generated successfully.")
             return output_pdf_file 
         print(f"Attempt {attempt+1}: Correcting LaTeX errors...")
+
         check_and_correct_latex(tex_file_path, error_message)
         clean_and_overwrite_latex_file(tex_file_path)
 

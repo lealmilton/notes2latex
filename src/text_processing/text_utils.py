@@ -1,5 +1,4 @@
 import os
-from config import BASE_DATA_PATH, BASE_PROCESSED_PATH, POPPLER_PATH, TOKEN_THRESHOLD
 import tiktoken
 from src.utils.prompts import PROMPT_OCR, PREVIOUS_NOTES_CONTEXT_OCR, FIRST_PAGE_CONTEXT_OCR
 
