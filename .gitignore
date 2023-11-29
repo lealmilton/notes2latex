@@ -160,3 +160,5 @@ cython_debug/
 #.idea/
 
 notebooks/pandoc-3.1.9-windows-x86_64.msi
+data/processed
+data/notes

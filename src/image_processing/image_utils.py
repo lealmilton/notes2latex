@@ -1,8 +1,17 @@
 import os
 from pdf2image import convert_from_path
 import base64
+from config import BASE_DATA_PATH, POPPLER_PATH
 
-def convert_pdf_to_png(pdf_path, poppler_path):
+def convert_pdf_to_png(file_name):
+
+        # Get paths from the config
+    base_data_path = BASE_DATA_PATH
+    poppler_path = POPPLER_PATH
+
+    # Construct the PDF path
+    pdf_path = os.path.join(base_data_path, 'notes', f'{file_name}.pdf')
+
     # Extracting the base name of the PDF file to name the folder
     base_name = os.path.splitext(os.path.basename(pdf_path))[0]
 
