@@ -1,5 +1,3 @@
-# Configuration file for notebook to main.py transition
-
 # Base paths
 BASE_DATA_PATH = "../data"
 BASE_PROCESSED_PATH = f"{BASE_DATA_PATH}/processed"
@@ -10,6 +8,3 @@ POPPLER_PATH = "../venv/poppler-23.11.0/Library/bin"
 
 # OCR and Text Processing Settings
 TOKEN_THRESHOLD = 5500
-
-# Gradio UI Settings
-# Add any specific settings for your Gradio interface here

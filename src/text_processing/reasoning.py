@@ -32,20 +32,15 @@ def check_and_correct_latex(input_file_path, error_message):
 
 
 def create_tex(combined_text_path):
-    # Extract the base name of the combined text file
+
     base_directory = os.path.normpath(os.path.dirname(combined_text_path))
 
-    # Generate the output file path for the tex file
     output_file_path = os.path.join(base_directory, 'formatted_notes.tex')
 
-    # Read the content of the combined text file
     file_content = read_file(combined_text_path)
 
-    # Count the number of tokens in the file content
     total_tokens = count_tokens(file_content)
-    print("TOTAL TOKENS:", total_tokens)
 
-    # Process the content if the token count is within the threshold
     if total_tokens <= TOKEN_THRESHOLD:
         response = gpt4_completion("", file_content, PROMPT_MD)
         save_to_file(output_file_path, response)
@@ -53,5 +48,4 @@ def create_tex(combined_text_path):
     else:
         print("File is too large. Try with a smaller one.")
 
-    # Return the path to the generated tex file
     return output_file_path
