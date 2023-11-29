@@ -39,9 +39,13 @@ def concatenate_text_files(ocr_text_folder, output_file_path):
     if not os.path.exists(ocr_text_folder):
         print(f"The specified folder '{ocr_text_folder}' does not exist.")
         return
+    # Custom sort key to sort by the numerical value in the file name
+    def sort_key(filename):
+        # Extract the number from the filename and convert to integer
+        return int(filename.split('.')[0])
 
-    # Get all .txt files in the folder
-    txt_files = sorted(f for f in os.listdir(ocr_text_folder) if f.endswith('.txt'))
+    # Get all .txt files in the folder and sort them using the custom key
+    txt_files = sorted([f for f in os.listdir(ocr_text_folder) if f.endswith('.txt')], key=sort_key)
 
     # Concatenate the contents of each file
     concatenated_text = ''
