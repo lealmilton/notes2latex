@@ -159,6 +159,6 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-notebooks/pandoc-3.1.9-windows-x86_64.msi
+pandoc-3.1.9-1-amd64.deb
 data/processed
 data/notes

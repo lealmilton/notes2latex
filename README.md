@@ -1,6 +1,6 @@
 # Notes2LaTeX Project
 
-Ugly math hand notes --> pretty Latex
+**Ugly math hand notes --> pretty Latex**
 
 ## Overview
 The Notes2LaTeX project is designed to convert handwritten notes into formatted LaTeX PDF documents. This process involves extracting text and graphical elements from images, post-processing and structuring the content using GPT-4, and finally, generating a LaTeX PDF document with the formatted content.
@@ -10,69 +10,76 @@ The Notes2LaTeX project is designed to convert handwritten notes into formatted 
 ## Project Structure
 
 ### `/data`
-- `/notes`: This directory holds the uploaded pdf of handwritten notes that need to be processed.
-- `/processed`: stores the assets folder of a given notes pdf
-- `/processed/pdf_name_placeholder/pngs`: folder that stores every pdf page converted as png.
-- `/processed/pdf_name_placeholder/ocr_text`: folder that stores every png extracted text using GPT-4V.
-
-### `/notebooks`
-- Jupyter notebooks used for prototyping and testing the algorithms before integrating them into the main application.
+- `/notes`: Holds the uploaded PDFs of handwritten notes for processing.
 
 ### `/src`
-Contains all the source code organized into modules by functionality.
+Organizes all the source code into modules by functionality.
 
 #### `/image_processing`
 - `ocr.py`: Interfaces with GPT-4V to extract text from images of handwritten notes.
 - `image_utils.py`: Provides utility functions for image preprocessing, such as noise reduction, binarization, and image normalization.
 
 #### `/text_processing`
-- `text_formatter.py`: Formats the extracted text into a structure that is compatible with LaTeX.
-- `reasoning.py`: Uses GPT-4V to perform logical structuring and reasoning to understand the flow and hierarchy of the document content.
+- `text_utils.py`: Contains utilities for text processing and formatting.
+- `reasoning.py`: Uses GPT-4 Turbo for logical structuring and reasoning to understand the flow and hierarchy of the document content.
 
 #### `/pdf_generation`
 - `pdf_creator.py`: Converts the structured document content into a LaTeX PDF document, handling layout and styling.
 
 #### `/utils`
-- `api_client.py`: Manages the API calls to the OpenAI GPT-4V service, including handling authentication and request retries.
-- `file_handler.py`: Contains functions to manage file I/O operations such as reading from and writing to disk.
+- `prompts.py`: Contains predefined prompts or templates used in various parts of the application, particularly with GPT-4 API calls.
 
-### `/tests`
-Contains test cases for each module to ensure code reliability and correctness.
 
-#### `/image_processing`
-- Tests for `ocr.py` and `image_utils.py` ensuring that image processing outputs the correct text and graphics.
+## Setting Up the Environment
 
-#### `/text_processing`
-- Tests for `text_formatter.py` and `reasoning.py` to validate the text structure and logical content flow.
+Before running the application, you need to set up the `OPENAI_API_KEY` environment variable. This key is essential for the application to interact with OpenAI's API.
 
-#### `/pdf_generation`
-- Tests for `pdf_creator.py` to check the PDF generation and formatting.
+1. **Obtain an API Key:**
+   If you don't already have an OpenAI API key, you can obtain one by signing up or logging into your account at [OpenAI](https://openai.com/).
 
-## Usage
-To use the Notes2LaTeX system, follow these steps:
-1. **Upload Handwritten Notes**: Place your handwritten notes images into the `data/images` directory.
-2. **Process Notes**: Run the `ocr.py` script to extract text and `image_utils.py` for image preprocessing.
-3. **Generate LaTeX PDF**: Execute the `pdf_creator.py` script to convert the processed content into a LaTeX PDF.
-4. **Download PDF**: The final LaTeX PDF will be available in the `data/processed` directory for download.
+2. **Set the Environment Variable:**
+   Set the `OPENAI_API_KEY` in your environment. This process varies depending on your operating system.
 
-Examples of input images and the corresponding output PDFs are available in the `examples` directory.
+   - **On Unix/Linux/macOS:**
+     ```bash
+     export OPENAI_API_KEY='your-api-key'
+     ```
+   - **On Windows (Command Prompt):**
+     ```bash
+     set OPENAI_API_KEY=your-api-key
+     ```
+   - **On Windows (PowerShell):**
+     ```powershell
+     $env:OPENAI_API_KEY='your-api-key'
+     ```
 
-If you encounter any issues, refer to the `troubleshooting.md` (to be done) guide for common problems and their solutions.
+## Running the Application with Docker
+
+To run the Notes2LaTeX system using Docker:
+
+1. **Clone the repository** and navigate to the directory:
+
+   ```bash
+   git clone https://github.com/lealmilton/notes2latex.git
+
+   cd notes2latex
+
+2. **Start the Application**:
+
+   ```bash
+   docker-compose up
+
+The application will be available at `http://localhost:8501`.
 
 ## Contributing
-We welcome contributions to the Notes2LaTeX project! If you'd like to contribute, please:
+We welcome contributions to the Notes2LaTeX project! If you'd like to contribute:
 - Fork the repository.
 - Create a new branch for your feature or fix.
-- Follow the code style guidelines provided in `CODE_STYLE.md`. (to be done)
 - Write or update tests as necessary.
 - Submit a pull request with a clear description of your changes.
-
-For more detailed instructions, see the `CONTRIBUTING.md` file. (to be done)
 
 ## License
 Notes2LaTeX is released under the MIT License. See the `LICENSE` file for full license text.
 
 ## Contact
 For support, collaboration, or inquiries, please open an issue in the GitHub repository or contact the maintainer.
-
-
