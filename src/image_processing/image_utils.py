@@ -4,15 +4,10 @@ import base64
 from config import BASE_DATA_PATH, POPPLER_PATH
 
 def convert_pdf_to_png(file_name):
+    # Define the PDF path using the provided file_name
+    pdf_path = file_name
 
-        # Get paths from the config
-    base_data_path = BASE_DATA_PATH
-    poppler_path = POPPLER_PATH
-
-    # Construct the PDF path
-    pdf_path = os.path.join(base_data_path, 'notes', f'{file_name}.pdf')
-
-    # Extracting the base name of the PDF file to name the folder
+    # Extract the base name of the PDF file to name the folder
     base_name = os.path.splitext(os.path.basename(pdf_path))[0]
 
     # Creating the main directory inside 'data/processed/'
@@ -26,12 +21,15 @@ def convert_pdf_to_png(file_name):
         os.makedirs(png_output_folder)
 
     # Convert PDF to a list of images
-    images = convert_from_path(pdf_path, poppler_path=poppler_path)
+    images = convert_from_path(pdf_path)
 
     # Save each page as a PNG
     for i, image in enumerate(images):
         image_path = os.path.join(png_output_folder, f'{i + 1}.png')
         image.save(image_path, 'PNG')
+
+    # Return the path to the PNG output folder
+    return png_output_folder
 
 
 def encode_image_to_base64(image_path):
