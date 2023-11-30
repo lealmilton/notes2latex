@@ -52,6 +52,15 @@ if pdf_path is not None:
                 mime="application/octet-stream"
             )
 
+        # New block for downloading the .tex file
+    if tex_path:
+        with open(tex_path, "r") as tex_file:
+            btn_tex = st.download_button(
+                label="📥 Download Your LaTeX Source (.tex) 📄",
+                data=tex_file,
+                file_name="raw.tex",
+                mime="text/plain"
+            )
 
     os.unlink(pdf_path)
     
