@@ -26,7 +26,7 @@ if uploaded_file is not None:
         pdf_path = tmp.name
 
     if pdf_path:
-        with st.spinner("Well, it's AI. It takes time. GPUs are running somewhere. Go read a theorem and come back in a few minutes."):
+        with st.spinner("Well, it's AI. It takes time. GPUs are running somewhere. Go read a theorem and come back soon 😂."):
             progress_bar = st.progress(0)
             # Convert PDF to PNG
             png_output_folder = convert_pdf_to_png(pdf_path)
