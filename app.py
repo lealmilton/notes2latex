@@ -6,62 +6,57 @@ from src.text_processing.reasoning import create_tex
 from src.pdf_generation.pdf_creator import output_pdf
 import os
 import tempfile
+from tqdm import tqdm
 
+st.title("Notes2LaTeX (GPT-4 powered) 🤖")
 
-st.title("📚 Notes2LaTeX - Ugly Handwritten Math to Pretty PDF! 📝")
+st.subheader("📝 Convert Handwritten Math to LaTeX using AI 📄")
 
+st.write("As of now, please only upload PDFs of up to 3 pages.")
 
-st.write("Transform your chaotic, coffee-stained notes into a beautifully formatted LaTeX PDF. It's like magic, but with more math! 🧙‍♂️✨")
+st.write("Longer files have increased error rates and take a long time to generate.")
 
-
-uploaded_file = st.file_uploader("📤 Upload your handwritten equations (in PDF, please!) 📄", type="pdf")
-
+uploaded_file = st.file_uploader("Upload your PDF (up to 3 pages)", type="pdf")
 
 pdf_path = None
 
-
 if uploaded_file is not None:
-    st.info("Uploading your PDF... Hang tight! (Did you hear about the mathematician who’s afraid of negative numbers? He'll stop at nothing to avoid them! 😄)")
-
     with tempfile.NamedTemporaryFile(delete=False, suffix='.pdf') as tmp:
         tmp.write(uploaded_file.getvalue())
         pdf_path = tmp.name
 
-if pdf_path is not None:
-    png_output_folder = convert_pdf_to_png(pdf_path)
-    st.success("PDF transformed into images! (Unlike Pi, this process has an end. 🥧)")
+    if pdf_path:
+        with st.spinner("Well, it's AI. It takes time. GPUs are running somewhere. Go read a theorem and come back in a few minutes."):
+            progress_bar = st.progress(0)
+            # Convert PDF to PNG
+            png_output_folder = convert_pdf_to_png(pdf_path)
+            progress_bar.progress(20)
 
-    ocr_text_folder = process_png_images(png_output_folder)
-    st.success("Text extracted! (Fun fact: parallel lines have so much in common. It’s a shame they’ll never meet. 📏)")
+            # Process PNG images with OCR
+            ocr_text_folder = process_png_images(png_output_folder)
+            progress_bar.progress(40)
 
-    combined_text_path = concatenate_text_files(ocr_text_folder)
-    st.success("Text concatenated! (Remember, algebra is about finding the x. Don’t ask y! 🤣)")
+            # Concatenate text files
+            combined_text_path = concatenate_text_files(ocr_text_folder)
+            progress_bar.progress(60)
 
-    tex_path = create_tex(combined_text_path)
-    st.success("TeX file ready! (Do you know why seven ate nine? Because you’re supposed to eat three squared meals a day!)")
+            # Create LaTeX from text
+            tex_path = create_tex(combined_text_path)
+            progress_bar.progress(80)
 
-    output_file_path = output_pdf(tex_path)
-    st.success("PDF is ready! (Calculators, the only place where division and multiplication are the same thing. 🧮)")
+            # Output final PDF
+            output_file_path = output_pdf(tex_path)
+            progress_bar.progress(100)
+        
+        if tex_path:
+            with open(tex_path, "r") as tex_file:
+                st.download_button("Download LaTeX Source", tex_file, "raw.tex")
 
-    if output_file_path:
-        with open(output_file_path, "rb") as file:
-            btn = st.download_button(
-                label="📥 Download Your LaTeX-ified PDF 📄",
-                data=file,
-                file_name="processed.pdf",
-                mime="application/octet-stream"
-            )
+        if output_file_path:
+            with open(output_file_path, "rb") as file:
+                st.download_button("Download LaTeX PDF", file, "processed.pdf")
 
-        # New block for downloading the .tex file
-    if tex_path:
-        with open(tex_path, "r") as tex_file:
-            btn_tex = st.download_button(
-                label="📥 Download Your LaTeX Source (.tex) 📄",
-                data=tex_file,
-                file_name="raw.tex",
-                mime="text/plain"
-            )
+        os.unlink(pdf_path)
 
-    os.unlink(pdf_path)
-    
-st.write("Thank you for using Notes2LaTeX! Spread the word and help fellow mathematicians turn their chaos into order! 🌟")
+st.write("Thank you for using Notes2LaTeX!")
+
