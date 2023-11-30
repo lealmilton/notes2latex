@@ -1,11 +1,13 @@
 import os
 import requests
 import time
+import streamlit as st
 from src.image_processing.image_utils import encode_image_to_base64
 from src.text_processing.text_utils import get_previous_description
 from src.text_processing.text_utils import create_prompt_with_previous_description
 
-api_key = os.getenv('OPENAI_API_KEY')
+#api_key = os.getenv('OPENAI_API_KEY')
+openai_api_key = st.secrets['openai']["OPENAI_API_KEY"]
 
 def send_image_to_gpt4v(image_path, prompt):
     
