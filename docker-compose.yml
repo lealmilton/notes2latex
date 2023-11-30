@@ -10,6 +10,7 @@ services:
       - n2l:/usr/src/app/data
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ENV_MODE=development
     command: streamlit run app.py
 
 volumes:
