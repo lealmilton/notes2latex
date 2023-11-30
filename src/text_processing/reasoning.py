@@ -1,11 +1,13 @@
 import os
 from config import TOKEN_THRESHOLD
 from openai import OpenAI
+import streamlit as st
 from src.text_processing.text_utils import read_file, save_to_file
 from src.utils.prompts import PROMPT_CHECK_LATEX, PROMPT_TEX
 from src.text_processing.text_utils import count_tokens, read_file, save_to_file
 
-api_key = os.getenv('OPENAI_API_KEY')
+#api_key = os.getenv('OPENAI_API_KEY')
+openai_api_key = st.secrets['openai']["OPENAI_API_KEY"]
 
 def gpt4_completion(context, file_content, prompt):
     client = OpenAI()  # Initialize the OpenAI client
