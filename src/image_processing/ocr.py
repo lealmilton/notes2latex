@@ -7,7 +7,7 @@ from src.text_processing.text_utils import get_previous_description
 from src.text_processing.text_utils import create_prompt_with_previous_description
 
 #api_key = os.getenv('OPENAI_API_KEY')
-api_key = st.secrets['openai']["OPENAI_API_KEY"]
+api_key = st.secrets["OPENAI_API_KEY"]
 
 def send_image_to_gpt4v(image_path, prompt):
     
