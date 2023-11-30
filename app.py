@@ -78,3 +78,16 @@ if st.session_state['processing_completed']:
             st.download_button("Download LaTeX PDF", file.read(), "processed.pdf")
 
 st.write("Thank you for using Notes2LaTeX!")
+
+# Embed YouTube video
+st.header("Demo Video")
+st.video("https://www.youtube.com/watch?v=5KYPnVQxRyk")
+
+# Link to GitHub repository
+st.markdown(
+    """
+    <a href="https://github.com/lealmilton/notes2latex">
+        <img src="https://raw.githubusercontent.com/edent/SuperTinyIcons/master/images/svg/github.svg" width="30" height="30">
+    </a>
+    """, unsafe_allow_html=True
+)
